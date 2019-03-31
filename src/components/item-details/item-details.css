@@ -1,0 +1,39 @@
+.item {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+
+.item__box {
+  padding: 10px 0;
+  width: 48%;
+}
+
+.item__img-box {
+  margin-right: 40px;
+}
+
+.item__img {
+  width: 200px;
+  height: 100%;
+}
+
+.item__title {
+  margin: 0;
+  margin-bottom: 10px;
+  color: var(--blue);
+  font-size: 20px;
+}
+
+.item__author {
+  margin-bottom: 10px;
+}
+
+.item__price {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.item__btn {
+  
+}

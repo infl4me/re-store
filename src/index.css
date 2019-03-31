@@ -1,0 +1,51 @@
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+:root {
+  --dark-blue: #0069D9;
+  --blue: #007bff;
+  --light-gray: #dddddd;
+  --border-color: var(--light-gray);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-size: 20px;
+  font-family: "Arial", sans-serif;
+  color: #000000;
+  background-color: #ffffff;
+}
+
+.btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.btn-blue {
+  background-color: var(--blue);
+  color: #ffffff;
+}
+
+.btn-blue:hover,
+.btn-blue:focus {
+  background-color: var(--dark-blue);
+}
+
+@media  (min-width: 1550px) {
+  .container {
+    width: 1550px;
+    margin: 0 auto;
+  }
+}
