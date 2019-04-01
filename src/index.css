@@ -34,13 +34,8 @@ body {
 }
 
 .btn-blue {
-  background-color: cadetblue;
+  background-color: var(--blue);
   color: #ffffff;
-}
-
-.btn-blue:hover,
-.btn-blue:focus {
-  background-color: #5f9eb5;
 }
 
 .btn-trash {
@@ -71,6 +66,11 @@ body {
 .btn-plus:hover {
   background-color: green;
   color: #ffffff;
+}
+
+.btn-blue:hover,
+.btn-blue:focus {
+  background-color: var(--dark-blue);
 }
 
 @media  (min-width: 1550px) {

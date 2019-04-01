@@ -23,8 +23,9 @@
 .item__title {
   margin: 0;
   margin-bottom: 5px;
-  color: var(--blue);
-  font-size: 20px;
+  color: darkcyan;
+  font-weight: bold;
+  font-size: 22px;
 }
 
 

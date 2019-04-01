@@ -17,4 +17,7 @@ lint:
 	npx eslint .
 
 deploy:
-	npm run deploy
+	npm run build
+	surge ./build re-store.surge.sh
+
+.PHONY: test

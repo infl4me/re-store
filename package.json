@@ -19,7 +19,6 @@
     "eslint-plugin-react": "^7.12.4",
     "gh-pages": "^2.0.1"
   },
-  "homepage": "http://infl4me.github.io/re-store/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

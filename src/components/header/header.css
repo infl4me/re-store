@@ -12,11 +12,11 @@
 }
 
 .header__logo:hover {
-  color: var(--blue);
+  color: darkcyan;
 }
 
 .header__cart-icon {
-  color: cadetblue;
+  color: darkcyan;
 }
 
 .header__logo-link {
