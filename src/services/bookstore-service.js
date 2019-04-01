@@ -17,9 +17,13 @@ export default class BookstoreService {
     },
   ];
 
-  getBooks = () => new Promise((resolve) => {
+  // eslint-disable-next-line no-unused-vars
+  getBooks = () => new Promise((resolve, reject) => {
+    // if (true) {
+    //   reject(new Error('BOOM'));
+    // }
     setTimeout(() => {
       resolve(this.data);
-    }, 0);
+    }, 700);
   })
 }

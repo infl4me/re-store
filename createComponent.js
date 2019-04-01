@@ -35,4 +35,4 @@ ${isClass ? classComponent : fnComponent}`;
   fs.writeFileSync(`${path}/index.js`, indexData);
 };
 
-fn('header', false);
+fn('cart-table', false);

@@ -34,13 +34,43 @@ body {
 }
 
 .btn-blue {
-  background-color: var(--blue);
+  background-color: cadetblue;
   color: #ffffff;
 }
 
 .btn-blue:hover,
 .btn-blue:focus {
-  background-color: var(--dark-blue);
+  background-color: #5f9eb5;
+}
+
+.btn-trash {
+  border: 1px solid red;
+  color: red;
+}
+
+.btn-trash:hover {
+  background-color: red;
+  color: #ffffff;
+}
+
+.btn-minus {
+  border: 1px solid #eec600;
+  color: #eec600;
+}
+
+.btn-minus:hover {
+  background-color: #eec600;
+  color: #ffffff;
+}
+
+.btn-plus {
+  border: 1px solid green;
+  color: green;
+}
+
+.btn-plus:hover {
+  background-color: green;
+  color: #ffffff;
 }
 
 @media  (min-width: 1550px) {

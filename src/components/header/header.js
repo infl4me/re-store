@@ -9,7 +9,7 @@ const Header = ({ numItems, total }) => (
     </div>
     <div>
       <span className="header__cart-icon fa fa-shopping-cart" />
-      {` ${numItems} items ($${total})`}
+      <Link className="header__cart-link" to="/cart">{` ${numItems} items ($${total})`}</Link>
     </div>
   </header>
 );

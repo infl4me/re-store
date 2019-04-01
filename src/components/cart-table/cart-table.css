@@ -1,0 +1,32 @@
+.cart-table__title {
+  margin: 0;
+  padding-left: 20px;
+  margin-bottom: 5px;
+}
+
+.cart-table__table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.cart-table__table thead th {
+  padding: 10px 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.cart-table__table td {
+  padding: 10px 0;
+}
+
+.cart-table__table .btn {
+  margin-right: 2px;
+  padding: 5px 10px;
+}
+
+.cart-table__total {
+  text-align: right;
+}

@@ -5,8 +5,10 @@
 
 
 .item__box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   padding: 10px 0;
-  width: 48%;
 }
 
 .item__img-box {
@@ -14,26 +16,23 @@
 }
 
 .item__img {
-  width: 200px;
-  height: 100%;
+  width: 145px;
+  height: auto;
 }
 
 .item__title {
   margin: 0;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   color: var(--blue);
   font-size: 20px;
 }
 
-.item__author {
-  margin-bottom: 10px;
-}
 
 .item__price {
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-top: auto;
 }
 
 .item__btn {
-  
+  margin-top: 10px;
 }
