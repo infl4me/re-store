@@ -9,6 +9,25 @@ const booksError = err => ({
   payload: err,
 });
 
+const bookAddedToCart = id => ({
+  type: 'ADD_BOOK_TO_CART',
+  payload: id,
+});
+
+const bookIncreasedInCart = id => ({
+  type: 'INCREASE_BOOK_IN_CART',
+  payload: id,
+});
+
+const bookDecreasedInCart = id => ({
+  type: 'DECREASE_BOOK_IN_CART',
+  payload: id,
+});
+
+const bookDeleteInCart = id => ({
+  type: 'DELETE_BOOK_IN_CART',
+  payload: id,
+});
 
 const fetchBooks = (dispatch, bookstoreService) => () => {
   dispatch(booksRequested());
@@ -18,8 +37,9 @@ const fetchBooks = (dispatch, bookstoreService) => () => {
 };
 
 export {
-  booksLoaded,
-  booksRequested,
-  booksError,
   fetchBooks,
+  bookAddedToCart,
+  bookIncreasedInCart,
+  bookDecreasedInCart,
+  bookDeleteInCart,
 };

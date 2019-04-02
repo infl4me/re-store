@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../../actions';
 import './cart-table.css';
 
 const CartTable = (props) => {
@@ -8,12 +9,12 @@ const CartTable = (props) => {
   } = props;
   const renderRow = (item, idx) => {
     const {
-      id, name, count, total,
+      id, title, count, total,
     } = item;
     return (
       <tr key={id}>
         <td>{idx + 1}</td>
-        <td>{name}</td>
+        <td>{title}</td>
         <td>{count}</td>
         <td>{total}</td>
         <td>
@@ -40,7 +41,7 @@ const CartTable = (props) => {
             <th>#</th>
             <th>Item</th>
             <th>Count</th>
-            <th>Price</th>
+            <th>Total</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -56,15 +57,12 @@ const CartTable = (props) => {
   );
 };
 
-const mapStateToProps = ({ cartItems, orderTotal }) => ({
-  items: cartItems,
-  orderTotal,
-});
+const mapStateToProps = ({ cart: { items, orderTotal } }) => ({ items, orderTotal });
 
-const mapDispatchToProps = () => ({
-  onIncrease: id => console.log(`increase ${id}`),
-  onDecrease: id => console.log(`decrease ${id}`),
-  onDelete: id => console.log(`delete ${id}`),
-});
+const mapDispatchToProps = {
+  onIncrease: actions.bookIncreasedInCart,
+  onDecrease: actions.bookDecreasedInCart,
+  onDelete: actions.bookDeleteInCart,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartTable);

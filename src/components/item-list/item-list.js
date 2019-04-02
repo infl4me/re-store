@@ -4,12 +4,18 @@ import ItemDetails from '../item-details';
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
 import { withBookstoreService } from '../hoc';
-import { fetchBooks } from '../../actions';
+import * as actions from '../../actions';
 import { compose } from '../../utils';
 import './item-list.css';
 
-const ItemList = ({ books }) => {
-  const items = books.map(item => <ItemDetails key={item.id} book={item} />);
+const ItemList = ({ books, onAddedToCart }) => {
+  const items = books.map(item => (
+    <ItemDetails
+      key={item.id}
+      onAddedToCart={() => onAddedToCart(item.id)}
+      book={item}
+    />
+  ));
   return (
     <ul className="item-list__list">{items}</ul>
   );
@@ -17,26 +23,29 @@ const ItemList = ({ books }) => {
 
 class ItemListContainer extends React.Component {
   componentDidMount() {
-    const { fetchData } = this.props;
-    fetchData();
+    const { fetchBooks } = this.props;
+    fetchBooks();
   }
 
   render() {
-    const { books, error, loading } = this.props;
+    const {
+      books, error, loading, onAddedToCart,
+    } = this.props;
     return (
       <div className="item-list">
         {loading && <Spinner />}
         {error && <ErrorIndicator />}
-        {!loading && !error && <ItemList books={books} />}
+        {!loading && !error && <ItemList books={books} onAddedToCart={onAddedToCart} />}
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ books, loading, error }) => ({ books, loading, error });
+const mapStateToProps = ({ itemList: { books, loading, error } }) => ({ books, loading, error });
 
 const mapDispatchToProps = (dispatch, { bookstoreService }) => ({
-  fetchData: fetchBooks(dispatch, bookstoreService),
+  fetchBooks: actions.fetchBooks(dispatch, bookstoreService),
+  onAddedToCart: id => dispatch(actions.bookAddedToCart(id)),
 });
 
 export default compose(
