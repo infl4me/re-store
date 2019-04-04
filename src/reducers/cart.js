@@ -1,6 +1,6 @@
 const initialState = {
   items: [],
-  orderTotal: 145,
+  orderTotal: 0,
 };
 
 export default (state, action) => {
@@ -8,21 +8,33 @@ export default (state, action) => {
 
   const { cart: cartState } = state;
 
-  const inc = ({ count, price, total }) => ({ count: count + 1, total: total + price });
-  const dec = ({ count, price, total }) => (
-    count <= 1 ? null : { count: count - 1, total: total - price }
-  );
-
-  const updateItem = fn => ({
-    ...cartState,
-    items: cartState.items.reduce((acc, item) => {
-      if (item.id === action.payload) {
-        const newParams = fn(item);
-        return newParams ? [...acc, { ...item, ...newParams }] : acc;
+  const updateItem = (newItem, id) => (
+    cartState.items.reduce((acc, item) => {
+      if (item.id === id) {
+        return [...acc, newItem];
       }
       return [...acc, item];
-    }, []),
-  });
+    }, [])
+  );
+
+  const removeItem = id => cartState.items.filter(item => item.id !== id);
+
+  const updateState = (multiplier = 1, book) => {
+    const id = book ? book.id : action.payload;
+    const item = book || cartState.items.find(el => el.id === id);
+    const newOrderTotal = cartState.orderTotal + (item.price * multiplier);
+    const newItem = {
+      ...item,
+      count: item.count + multiplier,
+      total: item.total + item.price * multiplier,
+    };
+    const newItems = newItem.count <= 0 ? removeItem(id) : updateItem(newItem, id);
+
+    return {
+      orderTotal: newOrderTotal,
+      items: newItems,
+    };
+  };
 
   switch (action.type) {
     case 'ADD_BOOK_TO_CART': {
@@ -30,7 +42,7 @@ export default (state, action) => {
       const { title, price } = state.itemList.books.find(book => book.id === bookId);
       const item = cartState.items.find(({ id }) => id === bookId);
       if (item) {
-        return updateItem(inc);
+        return updateState(1, item);
       }
 
       const newItem = {
@@ -42,18 +54,20 @@ export default (state, action) => {
       };
 
       return {
-        ...cartState,
+        orderTotal: cartState.orderTotal + price,
         items: [...cartState.items, newItem],
       };
     }
     case 'INCREASE_BOOK_IN_CART':
-      return updateItem(inc);
+      return updateState();
 
     case 'DECREASE_BOOK_IN_CART':
-      return updateItem(dec);
+      return updateState(-1);
 
-    case 'DELETE_BOOK_IN_CART':
-      return updateItem(() => null);
+    case 'DELETE_BOOK_IN_CART': {
+      const item = cartState.items.find(el => el.id === action.payload);
+      return updateState(-item.count, item);
+    }
 
     default:
       return cartState;
