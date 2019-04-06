@@ -8,7 +8,7 @@ import './app.css';
 
 const App = () => (
   <div className="app">
-    <Header numItems={5} />
+    <Header />
     <Switch>
       <Route path="/" component={HomePage} exact />
       <Route path="/cart" component={CartPage} />
