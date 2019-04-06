@@ -28,6 +28,7 @@ export default (state, action) => {
       count: item.count + multiplier,
       total: item.total + item.price * multiplier,
     };
+
     const newItems = newItem.count <= 0 ? removeItem(id) : updateItem(newItem, id);
 
     return {
